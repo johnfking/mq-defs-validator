@@ -23,7 +23,9 @@ Compares every member of every MQ datatype (as registered in a running game inst
 ### 1. Generate & run the in-game script
 
 ```bash
-python gen_validate_script.py
+python gen_validate_script.py \
+  --defs "C:/path/to/mq-definitions" \
+  --lua  "C:/path/to/MacroQuest/lua"
 ```
 
 Then in MacroQuest:
@@ -34,13 +36,13 @@ Then in MacroQuest:
 ### 2. Generate markdown reports
 
 ```bash
-python gen_validate_script.py --report
+python gen_validate_script.py --report --lua "C:/path/to/MacroQuest/lua"
 ```
 
 Reports are written to `validation/`. See `validation/_summary.md` for the full overview.
 
 ## Requirements
 
-- [mq-mcp](https://github.com/johnfking/mq-mcp) — provides the MQ connection and `config.json` with paths
-- MacroQuest running with `mq-mcp.lua` active
-- mq-definitions installed (via the [zenithcodeforge.mq-defs](https://marketplace.visualstudio.com/items?itemName=zenithcodeforge.mq-defs) VS Code extension or manual clone)
+- Python 3.9+ (no third-party packages needed)
+- MacroQuest running in-game
+- [mq-definitions](https://github.com/macroquest/mq-definitions) — clone it or install via the [zenithcodeforge.mq-defs](https://marketplace.visualstudio.com/items?itemName=zenithcodeforge.mq-defs) VS Code extension
