@@ -29,7 +29,10 @@ REPORT_DIR  = Path(__file__).parent / "validation"
 # ---------------------------------------------------------------------------
 
 _CLASS_RE = re.compile(r"^---@class\s+(\S+?)(?:\s*:\s*(\S+))?(?:\s|$)")
-_FIELD_RE = re.compile(r"^---@field\s+(?:public\s+|protected\s+|private\s+)?(\S+)")
+_FIELD_RE = re.compile(r"^---@field\s+(?:public\s+|protected\s+|private\s+)?(\S+)\s*(.*)")
+# Standalone function definitions: `function typename.membername(...)` — indexed/mapped
+# members not captured by @field but present in the runtime Member[i]/Method[i] lists.
+_FUNC_RE  = re.compile(r"^function\s+(\w+)\.(\w+)\s*\(")
 
 
 def _parse_file(path: Path) -> dict[str, set[str]]:
@@ -46,6 +49,14 @@ def _parse_file(path: Path) -> dict[str, set[str]]:
         m = _FIELD_RE.match(line)
         if m and current_class is not None:
             result[current_class].add(m.group(1).lower())
+            continue
+        m = _FUNC_RE.match(line)
+        if m:
+            type_name = m.group(1).lower()
+            member_name = m.group(2).lower()
+            if type_name not in result:
+                result[type_name] = set()
+            result[type_name].add(member_name)
     return result
 
 
@@ -132,6 +143,17 @@ for idx, type_name in ipairs(type_list) do
         local empty_run = 0
         for i = 0, 300 do
             local m = tlo.Member(i)()
+            if m and m ~= '' then
+                runtime[m:lower()] = true
+                empty_run = 0
+            else
+                empty_run = empty_run + 1
+                if empty_run >= 20 then break end
+            end
+        end
+        empty_run = 0
+        for i = 0, 300 do
+            local m = tlo.Method(i)()
             if m and m ~= '' then
                 runtime[m:lower()] = true
                 empty_run = 0

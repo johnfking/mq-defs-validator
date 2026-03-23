@@ -4,25 +4,23 @@
 
 | | Count |
 |---|---|
-| Runtime members | 18 |
+| Runtime members | 22 |
 | Documented members | 24 |
-| Matched | 17 |
-| Missing from defs | 1 |
-| Stale in defs | 7 |
+| Matched | 20 |
+| Missing from defs | 2 |
+| Stale in defs | 4 |
 
 ## Missing from mq-definitions
 
 In-game but no `@field` in the definitions.
 
+- `reset`
 - `search`
 
 ## Stale in mq-definitions
 
 `@field` entries in definitions not found at runtime.
 
-- `doface`
-- `dotarget`
-- `grab`
 - `n`
 - `tostring`
 - `u`

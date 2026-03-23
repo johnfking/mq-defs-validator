@@ -4,11 +4,11 @@
 
 | | Count |
 |---|---|
-| Runtime members | 168 |
+| Runtime members | 169 |
 | Documented members | 121 |
-| Matched | 119 |
+| Matched | 120 |
 | Missing from defs | 49 |
-| Stale in defs | 2 |
+| Stale in defs | 1 |
 
 ## Missing from mq-definitions
 
@@ -68,6 +68,5 @@ In-game but no `@field` in the definitions.
 
 `@field` entries in definitions not found at runtime.
 
-- `inspect`
 - `tostring`
 

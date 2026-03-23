@@ -4,21 +4,15 @@
 
 | | Count |
 |---|---|
-| Runtime members | 4 |
+| Runtime members | 5 |
 | Documented members | 4 |
-| Matched | 3 |
+| Matched | 4 |
 | Missing from defs | 1 |
-| Stale in defs | 1 |
+| Stale in defs | 0 |
 
 ## Missing from mq-definitions
 
 In-game but no `@field` in the definitions.
 
 - `find`
-
-## Stale in mq-definitions
-
-`@field` entries in definitions not found at runtime.
-
-- `remove`
 

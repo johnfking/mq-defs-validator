@@ -4,11 +4,11 @@
 
 | | Count |
 |---|---|
-| Runtime members | 17 |
+| Runtime members | 20 |
 | Documented members | 23 |
-| Matched | 15 |
-| Missing from defs | 2 |
-| Stale in defs | 8 |
+| Matched | 16 |
+| Missing from defs | 4 |
+| Stale in defs | 7 |
 
 ## Missing from mq-definitions
 
@@ -16,6 +16,8 @@ In-game but no `@field` in the definitions.
 
 - `istargeted`
 - `state`
+- `target`
+- `use`
 
 ## Stale in mq-definitions
 
@@ -26,7 +28,6 @@ In-game but no `@field` in the definitions.
 - `defaultu`
 - `defaultw`
 - `n`
-- `toggle`
 - `tostring`
 - `w`
 

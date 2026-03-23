@@ -5,9 +5,9 @@
 | | Count |
 |---|---|
 | Runtime members | 14 |
-| Documented members | 11 |
-| Matched | 10 |
-| Missing from defs | 4 |
+| Documented members | 13 |
+| Matched | 12 |
+| Missing from defs | 2 |
 | Stale in defs | 1 |
 
 ## Missing from mq-definitions
@@ -15,9 +15,7 @@
 In-game but no `@field` in the definitions.
 
 - `looters`
-- `mainassist`
 - `marknpc`
-- `member`
 
 ## Stale in mq-definitions
 

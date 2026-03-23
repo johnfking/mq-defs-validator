@@ -6,11 +6,11 @@
 
 | | Count |
 |---|---|
-| Runtime members | 301 |
-| Documented members | 210 |
-| Matched | 181 |
-| Missing from defs | 120 |
-| Stale in defs | 29 |
+| Runtime members | 305 |
+| Documented members | 248 |
+| Matched | 218 |
+| Missing from defs | 87 |
+| Stale in defs | 30 |
 
 ## Missing from mq-definitions
 
@@ -18,34 +18,19 @@ In-game but no `@field` in the definitions.
 
 - `aapointsassigned`
 - `aavitalitycap`
-- `ability`
-- `abilityready`
-- `abilitytimer`
-- `abilitytimertotal`
 - `adoptivecoin`
 - `aego`
-- `altability`
-- `altabilityready`
-- `altabilitytimer`
-- `altcurrency`
 - `ancientdraconiccoin`
 - `ancientsebilisiancoins`
-- `aura`
 - `autoskill`
-- `bank`
 - `bathezidtradegems`
 - `bayle`
 - `beneficial`
 - `bifurcatedcoin`
-- `book`
 - `brellium`
 - `brells`
 - `bronzefiats`
-- `buff`
 - `clarity`
-- `combatability`
-- `combatabilityready`
-- `combatabilitytimer`
 - `commemoratives`
 - `crippled`
 - `crystallizedfear`
@@ -56,6 +41,7 @@ In-game but no `@field` in the definitions.
 - `cursorplatinum`
 - `cursorsilver`
 - `diamondcoins`
+- `dismount`
 - `dreadstones`
 - `dsed`
 - `endurance`
@@ -65,21 +51,12 @@ In-game but no `@field` in the definitions.
 - `findbuff`
 - `fists`
 - `focus`
-- `freeinventory`
 - `froststoneducat`
-- `gem`
-- `gemtimer`
 - `goldtokens`
-- `groupmarknpc`
 - `growth`
 - `hasted`
-- `haveexpansion`
 - `hybridhp`
-- `inventory`
-- `itemready`
 - `krono`
-- `language`
-- `languageskill`
 - `laurioninnvoucher`
 - `loyaltytokens`
 - `maloed`
@@ -96,12 +73,9 @@ In-game but no `@field` in the definitions.
 - `overseertetradrachm`
 - `pctexptoaa`
 - `pctmercaaexp`
-- `petbuff`
 - `piecesofeight`
 - `practicepoints`
 - `pred`
-- `raidassisttarget`
-- `raidmarknpc`
 - `rebellionchits`
 - `reclamation`
 - `regen`
@@ -114,16 +88,11 @@ In-game but no `@field` in the definitions.
 - `shadedspecie`
 - `shadowstones`
 - `shalowainsprivatereserve`
-- `sharedbank`
 - `shining`
 - `silvertokens`
-- `skill`
 - `skillbase`
-- `skillcap`
 - `skin`
 - `slowed`
-- `song`
-- `spellready`
 - `spiritualmedallions`
 - `strength`
 - `sv`
@@ -133,14 +102,15 @@ In-game but no `@field` in the definitions.
 - `voucher`
 - `warforgedemblem`
 - `warlordssymbol`
-- `xtaggrocount`
-- `xtarget`
 - `xthatercount`
 
 ## Stale in mq-definitions
 
 `@field` entries in definitions not found at runtime.
 
+- `bandolier`
+- `blockedbuff`
+- `blockedpetbuff`
 - `buyer`
 - `canmount`
 - `casttimeleft`
@@ -163,10 +133,8 @@ In-game but no `@field` in the definitions.
 - `raidleaderexp`
 - `raidleaderpoints`
 - `silenced`
-- `sit`
+- `spell`
 - `spellrankcap`
-- `stand`
-- `stopcast`
 - `subscriptiondays`
 - `surname`
 - `trader`

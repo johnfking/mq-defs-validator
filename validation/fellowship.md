@@ -5,9 +5,9 @@
 | | Count |
 |---|---|
 | Runtime members | 13 |
-| Documented members | 11 |
-| Matched | 10 |
-| Missing from defs | 3 |
+| Documented members | 12 |
+| Matched | 11 |
+| Missing from defs | 2 |
 | Stale in defs | 1 |
 
 ## Missing from mq-definitions
@@ -15,7 +15,6 @@
 In-game but no `@field` in the definitions.
 
 - `exists`
-- `member`
 - `sharing`
 
 ## Stale in mq-definitions

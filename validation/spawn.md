@@ -4,26 +4,21 @@
 
 | | Count |
 |---|---|
-| Runtime members | 141 |
-| Documented members | 152 |
-| Matched | 130 |
-| Missing from defs | 11 |
-| Stale in defs | 22 |
+| Runtime members | 146 |
+| Documented members | 157 |
+| Matched | 140 |
+| Missing from defs | 6 |
+| Stale in defs | 17 |
 
 ## Missing from mq-definitions
 
 In-game but no `@field` in the definitions.
 
 - `bodywet`
-- `buff`
-- `buffcount`
 - `buffduration`
 - `buffspopulated`
-- `cachedbuff`
 - `istouchingswitch`
-- `mybuff`
 - `mybuffcount`
-- `mybuffduration`
 - `temporarypet`
 
 ## Stale in mq-definitions
@@ -37,9 +32,6 @@ In-game but no `@field` in the definitions.
 - `btemppet`
 - `bwaitingforport`
 - `collisioncounter`
-- `doassist`
-- `doface`
-- `dotarget`
 - `draggingplayer`
 - `dragnames`
 - `fd`
@@ -49,7 +41,5 @@ In-game but no `@field` in the definitions.
 - `ispassenger`
 - `lastcastnum`
 - `lastcasttime`
-- `leftclick`
 - `ptouchingswitch`
-- `rightclick`
 

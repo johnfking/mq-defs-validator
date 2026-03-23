@@ -4,11 +4,11 @@
 
 | | Count |
 |---|---|
-| Runtime members | 12 |
+| Runtime members | 13 |
 | Documented members | 21 |
-| Matched | 10 |
+| Matched | 11 |
 | Missing from defs | 2 |
-| Stale in defs | 11 |
+| Stale in defs | 10 |
 
 ## Missing from mq-definitions
 
@@ -31,5 +31,4 @@ In-game but no `@field` in the definitions.
 - `requireditem`
 - `requiredskill`
 - `requiredspell`
-- `select`
 

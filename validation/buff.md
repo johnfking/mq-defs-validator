@@ -6,9 +6,9 @@
 
 | | Count |
 |---|---|
-| Runtime members | 13 |
-| Documented members | 14 |
-| Matched | 13 |
+| Runtime members | 14 |
+| Documented members | 15 |
+| Matched | 14 |
 | Missing from defs | 0 |
 | Stale in defs | 1 |
 

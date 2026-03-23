@@ -7,17 +7,15 @@
 | | Count |
 |---|---|
 | Runtime members | 16 |
-| Documented members | 10 |
-| Matched | 9 |
-| Missing from defs | 7 |
+| Documented members | 12 |
+| Matched | 11 |
+| Missing from defs | 5 |
 | Stale in defs | 1 |
 
 ## Missing from mq-definitions
 
 In-game but no `@field` in the definitions.
 
-- `buff`
-- `buffduration`
 - `findbuff`
 - `name`
 - `prochold`

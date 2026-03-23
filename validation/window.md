@@ -4,19 +4,11 @@
 
 | | Count |
 |---|---|
-| Runtime members | 43 |
-| Documented members | 41 |
-| Matched | 40 |
-| Missing from defs | 3 |
+| Runtime members | 60 |
+| Documented members | 61 |
+| Matched | 60 |
+| Missing from defs | 0 |
 | Stale in defs | 1 |
-
-## Missing from mq-definitions
-
-In-game but no `@field` in the definitions.
-
-- `child`
-- `list`
-- `tab`
 
 ## Stale in mq-definitions
 

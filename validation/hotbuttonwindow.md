@@ -4,16 +4,17 @@
 
 | | Count |
 |---|---|
-| Runtime members | 16 |
+| Runtime members | 17 |
 | Documented members | 1 |
 | Matched | 0 |
-| Missing from defs | 16 |
+| Missing from defs | 17 |
 | Stale in defs | 1 |
 
 ## Missing from mq-definitions
 
 In-game but no `@field` in the definitions.
 
+- `activate`
 - `altability`
 - `barindex`
 - `buttonindex`

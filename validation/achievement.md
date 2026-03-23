@@ -4,18 +4,15 @@
 
 | | Count |
 |---|---|
-| Runtime members | 16 |
-| Documented members | 12 |
-| Matched | 12 |
-| Missing from defs | 4 |
+| Runtime members | 17 |
+| Documented members | 16 |
+| Matched | 16 |
+| Missing from defs | 1 |
 | Stale in defs | 0 |
 
 ## Missing from mq-definitions
 
 In-game but no `@field` in the definitions.
 
-- `completedtime`
-- `link`
-- `objective`
-- `objectivebyindex`
+- `inspect`
 

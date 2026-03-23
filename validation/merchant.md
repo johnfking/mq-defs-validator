@@ -6,19 +6,21 @@
 
 | | Count |
 |---|---|
-| Runtime members | 7 |
+| Runtime members | 12 |
 | Documented members | 12 |
-| Matched | 7 |
-| Missing from defs | 0 |
-| Stale in defs | 5 |
+| Matched | 11 |
+| Missing from defs | 1 |
+| Stale in defs | 1 |
+
+## Missing from mq-definitions
+
+In-game but no `@field` in the definitions.
+
+- `closewindow`
 
 ## Stale in mq-definitions
 
 `@field` entries in definitions not found at runtime.
 
-- `buy`
-- `openwindow`
-- `selectitem`
-- `sell`
 - `tostring`
 
