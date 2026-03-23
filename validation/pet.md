@@ -1,5 +1,7 @@
 # pet
 
+[← Summary](_summary.md)
+
 **Inherits:** `spawn`
 
 | | Count |

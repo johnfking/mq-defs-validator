@@ -1,5 +1,7 @@
 # time
 
+[← Summary](_summary.md)
+
 | | Count |
 |---|---|
 | Runtime members | 17 |

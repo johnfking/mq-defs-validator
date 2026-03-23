@@ -1,5 +1,7 @@
 # spell
 
+[← Summary](_summary.md)
+
 | | Count |
 |---|---|
 | Runtime members | 88 |

@@ -1,5 +1,7 @@
 # macroquest
 
+[← Summary](_summary.md)
+
 **Inherits:** `everquest`
 
 | | Count |

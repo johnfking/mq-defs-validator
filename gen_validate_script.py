@@ -233,6 +233,7 @@ def generate_reports(lua_dir: Path):
 
         with md_path.open("w", encoding="utf-8") as f:
             f.write(f"# {type_name}\n\n")
+            f.write(f"[← Summary](_summary.md)\n\n")
             if inherits:
                 f.write(f"**Inherits:** `{inherits}`\n\n")
             f.write("| | Count |\n|---|---|\n")
@@ -267,8 +268,8 @@ def generate_reports(lua_dir: Path):
         f.write("# mq-definitions Validation Summary\n\n")
         f.write("| Type | Runtime | Documented | Missing | Stale | Status |\n")
         f.write("|------|---------|------------|---------|-------|--------|\n")
-        for row in summary_rows:
-            f.write("| {} | {} | {} | {} | {} | {} |\n".format(*row))
+        for type_name, runtime, documented, missing, stale, status in summary_rows:
+            f.write(f"| [{type_name}]({type_name}.md) | {runtime} | {documented} | {missing} | {stale} | {status} |\n")
 
     print(f"Reports written to {REPORT_DIR}/")
     print(f"Summary: {REPORT_DIR}/_summary.md")

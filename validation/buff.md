@@ -1,5 +1,7 @@
 # buff
 
+[← Summary](_summary.md)
+
 **Inherits:** `spell`
 
 | | Count |

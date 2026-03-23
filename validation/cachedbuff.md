@@ -1,5 +1,7 @@
 # cachedbuff
 
+[← Summary](_summary.md)
+
 **Inherits:** `spell`
 
 | | Count |

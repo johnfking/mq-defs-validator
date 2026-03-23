@@ -1,5 +1,7 @@
 # target
 
+[← Summary](_summary.md)
+
 **Inherits:** `spawn`
 
 | | Count |
