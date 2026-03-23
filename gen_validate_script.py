@@ -32,34 +32,54 @@ _CLASS_RE = re.compile(r"^---@class\s+(\S+?)(?:\s*:\s*(\S+))?(?:\s|$)")
 _FIELD_RE = re.compile(r"^---@field\s+(?:public\s+|protected\s+|private\s+)?(\S+)")
 
 
-def _parse_file(path: Path) -> dict[str, set[str]]:
-    result: dict[str, set[str]] = {}
+def _parse_file(path: Path) -> dict[str, tuple[set[str], Optional[str]]]:
+    """Return {type_name_lower: (members, parent_name_lower)} from one file."""
+    result: dict[str, tuple[set[str], Optional[str]]] = {}
     current_class: Optional[str] = None
     for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
         m = _CLASS_RE.match(line)
         if m:
             current_class = m.group(1).lower()
-            result.setdefault(current_class, set())
+            parent = m.group(2).lower() if m.group(2) else None
+            if current_class not in result:
+                result[current_class] = (set(), parent)
             continue
         m = _FIELD_RE.match(line)
         if m and current_class is not None:
-            result[current_class].add(m.group(1).lower())
+            result[current_class][0].add(m.group(1).lower())
     return result
 
 
 def parse_definitions(defs_path: Path) -> dict[str, set[str]]:
-    """Parse mq/datatype/ LuaCATS files and return {type_name: {members}}."""
-    combined: dict[str, set[str]] = {}
+    """Parse mq/datatype/ LuaCATS files and return {type_name: {all_members}}.
+
+    Inheritance is resolved: each type's member set includes all members from
+    its ancestor types so that inherited members aren't flagged as missing.
+    """
+    # First pass: collect raw members and inheritance per type
+    raw: dict[str, tuple[set[str], Optional[str]]] = {}
     datatype_dir = defs_path / "mq" / "datatype"
     if not datatype_dir.exists():
         raise FileNotFoundError(f"mq/datatype/ not found under {defs_path}")
     for lua_file in datatype_dir.rglob("*.lua"):
-        for type_name, members in _parse_file(lua_file).items():
-            if type_name in combined:
-                combined[type_name].update(members)
+        for type_name, (members, parent) in _parse_file(lua_file).items():
+            if type_name in raw:
+                raw[type_name][0].update(members)
             else:
-                combined[type_name] = set(members)
-    return combined
+                raw[type_name] = (set(members), parent)
+
+    # Second pass: resolve full member sets by walking inheritance chain
+    def resolve(name: str, seen: set[str]) -> set[str]:
+        if name not in raw or name in seen:
+            return set()
+        seen.add(name)
+        members, parent = raw[name]
+        all_members = set(members)
+        if parent:
+            all_members |= resolve(parent, seen)
+        return all_members
+
+    return {name: resolve(name, set()) for name in raw}
 
 
 # ---------------------------------------------------------------------------
