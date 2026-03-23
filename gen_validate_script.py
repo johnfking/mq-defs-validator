@@ -260,7 +260,7 @@ def generate_reports(lua_dir: Path):
         summary_rows.append((
             type_name, runtime_count, def_count,
             len(missing), len(stale),
-            "ok" if not missing and not stale else "gaps"
+            "🟢 ok" if not missing and not stale else "🟠 gaps"
         ))
 
     summary_path = REPORT_DIR / "_summary.md"
