@@ -32,54 +32,40 @@ _CLASS_RE = re.compile(r"^---@class\s+(\S+?)(?:\s*:\s*(\S+))?(?:\s|$)")
 _FIELD_RE = re.compile(r"^---@field\s+(?:public\s+|protected\s+|private\s+)?(\S+)")
 
 
-def _parse_file(path: Path) -> dict[str, tuple[set[str], Optional[str]]]:
-    """Return {type_name_lower: (members, parent_name_lower)} from one file."""
-    result: dict[str, tuple[set[str], Optional[str]]] = {}
+def _parse_file(path: Path) -> dict[str, set[str]]:
+    """Return {type_name_lower: {member_name_lower, ...}} from one file."""
+    result: dict[str, set[str]] = {}
     current_class: Optional[str] = None
     for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
         m = _CLASS_RE.match(line)
         if m:
             current_class = m.group(1).lower()
-            parent = m.group(2).lower() if m.group(2) else None
             if current_class not in result:
-                result[current_class] = (set(), parent)
+                result[current_class] = set()
             continue
         m = _FIELD_RE.match(line)
         if m and current_class is not None:
-            result[current_class][0].add(m.group(1).lower())
+            result[current_class].add(m.group(1).lower())
     return result
 
 
 def parse_definitions(defs_path: Path) -> dict[str, set[str]]:
-    """Parse mq/datatype/ LuaCATS files and return {type_name: {all_members}}.
+    """Parse mq/datatype/ LuaCATS files.
 
-    Inheritance is resolved: each type's member set includes all members from
-    its ancestor types so that inherited members aren't flagged as missing.
+    Returns {type_name_lower: {member_name_lower, ...}} for each type.
+    Only includes members defined directly on that type — no inheritance.
     """
-    # First pass: collect raw members and inheritance per type
-    raw: dict[str, tuple[set[str], Optional[str]]] = {}
     datatype_dir = defs_path / "mq" / "datatype"
     if not datatype_dir.exists():
         raise FileNotFoundError(f"mq/datatype/ not found under {defs_path}")
+    combined: dict[str, set[str]] = {}
     for lua_file in datatype_dir.rglob("*.lua"):
-        for type_name, (members, parent) in _parse_file(lua_file).items():
-            if type_name in raw:
-                raw[type_name][0].update(members)
+        for type_name, members in _parse_file(lua_file).items():
+            if type_name in combined:
+                combined[type_name].update(members)
             else:
-                raw[type_name] = (set(members), parent)
-
-    # Second pass: resolve full member sets by walking inheritance chain
-    def resolve(name: str, seen: set[str]) -> set[str]:
-        if name not in raw or name in seen:
-            return set()
-        seen.add(name)
-        members, parent = raw[name]
-        all_members = set(members)
-        if parent:
-            all_members |= resolve(parent, seen)
-        return all_members
-
-    return {name: resolve(name, set()) for name in raw}
+                combined[type_name] = set(members)
+    return combined
 
 
 # ---------------------------------------------------------------------------
@@ -215,7 +201,7 @@ def build_def_table(defs: dict[str, set[str]]) -> str:
     return "\n".join(lines)
 
 
-def generate_lua(defs: dict, lua_dir: Path) -> str:
+def generate_lua(defs: dict) -> str:
     script = LUA_TEMPLATE.replace("{DEF_TABLE}", build_def_table(defs))
     script = script.replace("{result_name}", RESULT_NAME)
     return script
@@ -303,7 +289,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--defs", metavar="PATH",
-                        help="Path to mq-definitions repo root (required for --generate)")
+                        help="Path to mq-definitions repo root (required for generating the Lua script)")
     parser.add_argument("--lua", metavar="PATH", required=True,
                         help="Path to MacroQuest lua directory")
     parser.add_argument("--report", action="store_true",
@@ -324,7 +310,7 @@ def main():
     defs = parse_definitions(defs_path)
     print(f"  {len(defs)} types")
 
-    lua_src = generate_lua(defs, lua_dir)
+    lua_src = generate_lua(defs)
     out_path = lua_dir / SCRIPT_NAME
     out_path.write_text(lua_src, encoding="utf-8")
     print(f"Lua script written to: {out_path}")
