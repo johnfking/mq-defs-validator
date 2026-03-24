@@ -19,7 +19,7 @@
 | [bool](bool.md) | 0 | 1 | 0 | 1 | 🟠 gaps |
 | [buff](buff.md) | 14 | 15 | 0 | 1 | 🟠 gaps |
 | [cachedbuff](cachedbuff.md) | 9 | 9 | 0 | 0 | 🟢 ok |
-| [character](character.md) | 305 | 248 | 87 | 30 | 🟠 gaps |
+| [character](character.md) | 340 | 248 | 98 | 6 | 🟠 gaps |
 | [charselectlist](charselectlist.md) | 6 | 6 | 0 | 0 | 🟢 ok |
 | [class](class.md) | 12 | 11 | 1 | 0 | 🟠 gaps |
 | [corpse](corpse.md) | 3 | 3 | 0 | 0 | 🟢 ok |

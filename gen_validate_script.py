@@ -140,27 +140,13 @@ for idx, type_name in ipairs(type_list) do
         results[type_name] = { exists=false }
     else
         local runtime = {}
-        local empty_run = 0
-        for i = 0, 300 do
+        for i = 0, 5000 do
             local m = tlo.Member(i)()
-            if m and m ~= '' then
-                runtime[m:lower()] = true
-                empty_run = 0
-            else
-                empty_run = empty_run + 1
-                if empty_run >= 20 then break end
-            end
+            if m and m ~= '' then runtime[m:lower()] = true end
         end
-        empty_run = 0
-        for i = 0, 300 do
+        for i = 0, 5000 do
             local m = tlo.Method(i)()
-            if m and m ~= '' then
-                runtime[m:lower()] = true
-                empty_run = 0
-            else
-                empty_run = empty_run + 1
-                if empty_run >= 20 then break end
-            end
+            if m and m ~= '' then runtime[m:lower()] = true end
         end
 
         local missing = {}

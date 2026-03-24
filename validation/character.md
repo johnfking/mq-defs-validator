@@ -6,11 +6,11 @@
 
 | | Count |
 |---|---|
-| Runtime members | 305 |
+| Runtime members | 340 |
 | Documented members | 248 |
-| Matched | 218 |
-| Missing from defs | 87 |
-| Stale in defs | 30 |
+| Matched | 242 |
+| Missing from defs | 98 |
+| Stale in defs | 6 |
 
 ## Missing from mq-definitions
 
@@ -20,6 +20,7 @@ In-game but no `@field` in the definitions.
 - `aavitalitycap`
 - `adoptivecoin`
 - `aego`
+- `airsupply`
 - `ancientdraconiccoin`
 - `ancientsebilisiancoins`
 - `autoskill`
@@ -56,14 +57,21 @@ In-game but no `@field` in the definitions.
 - `growth`
 - `hasted`
 - `hybridhp`
+- `invited`
+- `inviter`
+- `isberserk`
 - `krono`
 - `laurioninnvoucher`
+- `lck`
 - `loyaltytokens`
 - `maloed`
 - `marksofvalor`
+- `maxairsupply`
+- `maxlevel`
 - `mckenzie`
 - `medalsofconflict`
 - `medalsofheroism`
+- `membershiplevel`
 - `mercaaexp`
 - `mercaapoints`
 - `mercaapointsspent`
@@ -71,8 +79,11 @@ In-game but no `@field` in the definitions.
 - `motes`
 - `nobles`
 - `overseertetradrachm`
+- `parcelstatus`
+- `pctairsupply`
 - `pctexptoaa`
 - `pctmercaaexp`
+- `personalevel`
 - `piecesofeight`
 - `practicepoints`
 - `pred`
@@ -108,34 +119,10 @@ In-game but no `@field` in the definitions.
 
 `@field` entries in definitions not found at runtime.
 
-- `bandolier`
-- `blockedbuff`
-- `blockedpetbuff`
 - `buyer`
-- `canmount`
-- `casttimeleft`
 - `counters`
-- `counterscorruption`
-- `counterscurse`
-- `counterspoison`
-- `dotted`
-- `feared`
-- `groupleaderexp`
-- `groupleaderpoints`
 - `id`
-- `invulnerable`
-- `lastzoned`
 - `level`
-- `numbagslots`
-- `origin`
-- `pctgroupleaderexp`
-- `pctraidleaderexp`
-- `raidleaderexp`
-- `raidleaderpoints`
-- `silenced`
-- `spell`
-- `spellrankcap`
-- `subscriptiondays`
 - `surname`
 - `trader`
 
